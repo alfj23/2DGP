@@ -23,12 +23,12 @@ def Move_1to2():
         frame = (frame + 1) % 8
         x1 -= 3
         y1 -= 3 * Inclination
-        delay(0.01)
+        delay(0.02)
         get_events()
 
 def Move_2to3():
     x1, y1 = 132, 243
-    x2, y2 = 535, 570
+    x2, y2 = 535, 470
     X_Gap = x2 - x1
     Y_Gap = y2 - y1
     Inclination = Y_Gap / X_Gap  # 기울기
@@ -42,10 +42,26 @@ def Move_2to3():
         frame = (frame + 1) % 8
         x1 += 3
         y1 += 3 * Inclination
-        delay(0.01)
+        delay(0.02)
         get_events()
 def Move_3to4():
-    pass
+    x1, y1 = 535, 470
+    x2, y2 = 477, 203
+    X_Gap = x2 - x1
+    Y_Gap = y2 - y1
+    Inclination = Y_Gap / X_Gap  # 기울기
+
+    frame = 0
+    while x1 > x2:
+        clear_canvas_now()
+        grass.draw(400, 30)
+        character.clip_draw(frame * 100, 0, 100, 100, x1, y1)
+        update_canvas()
+        frame = (frame + 1) % 8
+        x1 -= 3
+        y1 -= 3 * Inclination
+        delay(0.02)
+        get_events()
 def Move_4to5():
     pass
 def Move_5to6():
@@ -61,8 +77,8 @@ def Move_9to10():
 def Move_10to1():
     pass
 while True:
-    Move_1to2()
-    Move_2to3()
+   # Move_1to2()
+   # Move_2to3()
     Move_3to4()
     Move_4to5()
     Move_5to6()
