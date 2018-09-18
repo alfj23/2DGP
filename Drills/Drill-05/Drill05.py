@@ -5,7 +5,15 @@ open_canvas()
 grass = load_image('grass.png')
 character = load_image('character.png')
 def move_from_center_to_right():
-    pass
+    x, y = 800//2, 90  # 화면에 중심에 이동시키고 싶다는 것을 코드로 보여줄 수 있음. x, y 페어로 움직이니 한번에
+    while x < 800 - 25:
+        clear_canvas_now()
+        grass.draw_now(400, 30)
+        character.draw_now(x, y)
+        x += 2
+        delay(0.01)
+
+
 def move_up():
     pass
 def move_left():
