@@ -17,10 +17,20 @@ def Get_Coord_from_Array(i, j):
     return x1, y1, x2, y2
 
 def Move(x, y):
+    frame = 0
+    while( x1 < x2 & y1 < y2):
+        clear_canvas_now()
+        grass.draw_now(400, 30)
+        character.clip_draw(frame * 100, 0, 100, 100, x1, y1)
+
     pass
+i = 0
+j = i + 2
 while True:
     Get_Coord_from_Array(i, j)
     Move()
+    i += 2
+    j += 2
     pass
     
 close_canvas()
