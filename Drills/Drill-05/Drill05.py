@@ -23,7 +23,7 @@ def Move_1to2():
         frame = (frame + 1) % 8
         x1 -= 3
         y1 -= 3 * Inclination
-        delay(0.02)
+        delay(0.033)
         get_events()
 
 def Move_2to3():
@@ -40,8 +40,8 @@ def Move_2to3():
         character.clip_draw(frame * 100, 100, 100, 100, x1, y1)
         update_canvas()
         frame = (frame + 1) % 8
-        x1 += 3
-        y1 += 3 * Inclination
+        x1 += 5
+        y1 += 5 * Inclination
         delay(0.02)
         get_events()
 def Move_3to4():
@@ -189,15 +189,15 @@ def Move_10to1():
         delay(0.04)
         get_events()
 while True:
-     Move_1to2()
-     Move_2to3()
-     Move_3to4()
-     Move_4to5()
-     Move_5to6()
-     Move_6to7()
-     Move_7to8()
-     Move_8to9()
-     Move_9to10()
-     Move_10to1()
+    Move_1to2()
+    Move_2to3()
+    Move_3to4()
+    Move_4to5()
+    Move_5to6()
+    Move_6to7()
+    Move_7to8()
+    Move_8to9()
+    Move_9to10()
+    Move_10to1()
     
 close_canvas()
