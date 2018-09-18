@@ -19,15 +19,23 @@ def Get_Coord_from_Array(i, j):
     else:
         x2, y2 = Array_Coordinate[i + 2:j + 2:]
     return x1, y1, x2, y2
-
+def Swap(a, b):
+    tmp = a
+    a = b
+    b = tmp
 def Move(x, y):
+    x1, y1, x2, y2 = Get_Coord_from_Array(i, j)
+    X_Gap = x2 - x1
+    Y_Gap = y2 - y1
+    Inclination = Y_Gap / X_Gap
+
     frame = 0
-    while( x1 < x2 & y1 < y2):
-        clear_canvas_now()
-        grass.draw_now(400, 30)
-        character.clip_draw(frame * 100, 0, 100, 100, x1, y1)
+    if (x1 > x2):
+        Swap(x1, x2)
+    while x1 < x2:
 
     pass
+
 i = 0
 j = i + 2
 while True:
