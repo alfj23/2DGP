@@ -41,10 +41,13 @@ while running:
 
     if Char_x1 < Char_x2:  # 우측을 바라봄.
         character.clip_draw(frame * 100, 100 * 1, 100, 100, Char_x1, Char_y1)
+        Char_x1 += (Char_x2 - Char_x1) / 10
+        Char_y1 += (Char_y2 - Char_y1) / 10
 
     elif Char_x1 > Char_x2:  # 좌측을 바라봄.
         character.clip_draw(frame * 100, 0 * 1, 100, 100, Char_x1, Char_y1)
-        
+        Char_x1 += (Char_x2 - Char_x1) / 10
+        Char_y1 += (Char_y2 - Char_y1) / 10
 
     update_canvas()
     frame = (frame + 1) % 8
