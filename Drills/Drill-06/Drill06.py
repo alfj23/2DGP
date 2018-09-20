@@ -34,36 +34,42 @@ hide_cursor()
 x_change = (Char_x1 - Char_x2)
 y_change = (Char_y1 - Char_y2)
 m = y_change / x_change
-while running:
-    clear_canvas()
-    kpu_ground.draw(KPU_WIDTH // 2, KPU_HEIGHT // 2)
-    hand_arrow.draw(x, y)
 
-    if Char_x1 < Char_x2:  # 우측을 바라봄.
-        character.clip_draw(frame * 100, 100 * 1, 100, 100, Char_x1, Char_y1)
-        Char_x1 += 2
-        if(0<= m <= 1):
-            Char_y1+=m
-        elif m > 1:
-            Char_x1 -= 1 / m
-            Char_y1 += 1
-    elif Char_x1 > Char_x2:  # 좌측을 바라봄.
+def move_LD(): # x1 > x2 and y1 > y2
+    x_change = (Char_x1 - Char_x2)
+    y_change = (Char_y1 - Char_y2)
+    m = y_change / x_change
+    while running and Char_x1 > Char_x2:
+        clear_canvas()
+        kpu_ground.draw(KPU_WIDTH // 2, KPU_HEIGHT // 2)
+        hand_arrow.draw(x, y)
         character.clip_draw(frame * 100, 0 * 1, 100, 100, Char_x1, Char_y1)
-        if(0<= m <= 1):
-            Char_y1 -= m
-            Char_x1 -= 2
-        elif m > 1:
-            Char_x1 -= 1/m
-            Char_y1 += 1
+        x -= 1
+        y -= m
+        update_canvas()
+        frame = (frame + 1) % 8
 
-    update_canvas()
-    frame = (frame + 1) % 8
+        delay(0.02)
+        handle_events()
+def move_RU(): # x1 < x2 and y1 < y2
+    x_change = (Char_x1 - Char_x2)
+    y_change = (Char_y1 - Char_y2)
+    m = y_change / x_change
+    while running and Char_x1 < Char_x2:
+        clear_canvas()
+        kpu_ground.draw(KPU_WIDTH // 2, KPU_HEIGHT // 2)
+        hand_arrow.draw(x, y)
+        character.clip_draw(frame * 100, 0 * 1, 100, 100, Char_x1, Char_y1)
+        x += 1
+        y += m
+        update_canvas()
+        frame = (frame + 1) % 8
 
-    delay(0.02)
-    handle_events()
-
+        delay(0.02)
+        handle_events()
 close_canvas()
 
-
+whlie True:
+    pass
 
 
