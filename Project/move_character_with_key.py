@@ -34,6 +34,7 @@ running = True
 x = 800 // 2
 frame = 0
 dir = 0
+hide_lattice()
 while running:
     clear_canvas()
     grass.draw(400, 30)
