@@ -83,7 +83,7 @@ def draw_line(p1, p2):
 
 prepare_turtle_canvas()
 size = 6
-points = [(random.randint(-500, 500), random.randint(-350, 350)) for i in range(size)] # 리스트, 튜플 사용
+points = [(random.randint(-0, 100), random.randint(-350, 350)) for i in range(size)] # 리스트, 튜플 사용
 
 n =1
 while True:
