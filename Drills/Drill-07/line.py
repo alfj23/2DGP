@@ -74,9 +74,9 @@ def draw_line(p1, p2):
 
     for i in range (0, 100 + 1, 5):
         t = i / 100 # 백분율로 바꿔줌
-        x = (1-t)*p1[0] +  t*p2[0]
-        y = (1-t)*p1[1] +  t*p2[1]
-        draw_point((x,y))
+        x = (1-t)*p1[0] + t*p2[0]
+        y = (1-t)*p1[1] + t*p2[1]
+        draw_point((x, y))
 
     draw_point(p2) # 마지막 점이 안그려져서 반드시 따로 찍어줘야한다.!!!!!!!
 
@@ -85,7 +85,7 @@ prepare_turtle_canvas()
 size = 6
 points = [(random.randint(-0, 100), random.randint(-350, 350)) for i in range(size)] # 리스트, 튜플 사용
 
-n =1
+n = 1
 while True:
     draw_line(points[n-1], points[n])
     n = (n + 1) % size  # -1 맨 끝점!!!
