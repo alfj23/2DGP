@@ -35,13 +35,13 @@ class Ball:
 
     def fall(self):
         if self.size == 0:
-            if self.y == 60 + (41/2):
-                self.y = 60+(41/2)
+            if self.y <= 50 + (41/2):
+                self.y = 50+(41/2)
             else:
                 self.y -= self.speed
         elif self.size == 1:
-            if self.y == 60 + (21/2):
-                self.y = 60 + (21/2)
+            if self.y <= 50 + (21/2):
+                self.y = 50 + (21/2)
             else:
                 self.y -= self.speed
 
