@@ -24,7 +24,14 @@ class Boy:
         self.image.clip_draw(self.frame * 100, 0, 100, 100, self.x, self.y)
 
 class Ball:
-    pass
+    def __init__(self):
+        self.x, self.y = random.randint(0, 800), 599
+
+    def fall(self):
+        pass
+
+    def draw(self):
+        pass
 
 def handle_events():
 
