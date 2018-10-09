@@ -26,6 +26,11 @@ class Boy:
 class Ball:
     def __init__(self):
         self.x, self.y = random.randint(0, 800), 599
+        self.size = random.randint(0, 1)
+        if self.size == 0:
+            self.image = load_image('ball41x41.png')
+        else:
+            self.image = load_image('ball21x21.png')
 
     def fall(self):
         pass
