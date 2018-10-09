@@ -57,9 +57,11 @@ def Move_character(p1, p2, p3, p4):
 
 
 size = 10
-Random_Coordinates = [(random.randint(0+25, 800-25), random.randint(0+50, 600-50)) for i in range(size)]
+Random_Coordinates = [(random.randint(200+25, 800-25), random.randint(100+50, 600-50)) for i in range(size)]
 i = 1
 while True:
    # Move_character((200,200),(400,400),(600,200),(700,400))
-    Move_character(Random_Coordinates[i], Random_Coordinates[i+1], Random_Coordinates[i+2],Random_Coordinates[i+3])
-    i = (i + 1) % size
+    Move_character(Random_Coordinates[0], Random_Coordinates[1], Random_Coordinates[2],Random_Coordinates[3])
+    Move_character(Random_Coordinates[3], Random_Coordinates[4], Random_Coordinates[5], Random_Coordinates[6])
+    Move_character(Random_Coordinates[6], Random_Coordinates[7], Random_Coordinates[8], Random_Coordinates[9])
+    i = (i + 4) % size
