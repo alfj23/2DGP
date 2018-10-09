@@ -46,7 +46,8 @@ class Ball:
                 self.y -= self.speed
 
     def draw(self):
-        pass
+        self.image.draw(self.x, self.y)
+
 
 def handle_events():
 
@@ -65,7 +66,7 @@ open_canvas()
 
 team = [Boy() for i in range(11)]
 grass = Grass()
-
+balls = [Ball() for i in range(20)]
 running = True
 
 # game main loop code
@@ -75,11 +76,14 @@ while running:
 
     for boy in team:
         boy.update()
-
+    for ball in balls:
+        ball.fall()
     clear_canvas()
     grass.draw()
     for boy in team:
         boy.draw()
+    for ball in balls:
+        ball.draw()
     update_canvas()
 
     delay(0.05)
