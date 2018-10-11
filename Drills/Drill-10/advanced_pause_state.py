@@ -5,7 +5,7 @@ import main_state
 
 __name__ = "AdvancedPauseState"
 icon = None
-counter = 0
+
 
 class Pause:
     def __init__(self):
@@ -14,7 +14,7 @@ class Pause:
         self.blinkering = True
 
     def update(self):
-        self.time += (self.time + 1) % 2
+        self.time = (self.time + 1) % 2
 
     def draw(self):
         if self.time == 0:
@@ -22,22 +22,18 @@ class Pause:
 
 def enter():
     global icon
-    global counter
     icon = Pause()
 
 def exit():
     global icon
     del icon
 
-
 def update():
-    global counter
     icon.update()
-
+    delay(0.25)
 
 
 def draw():
-    global counter
     clear_canvas()
     main_state.draw()
     icon.draw()
