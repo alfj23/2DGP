@@ -90,7 +90,7 @@ def run(start_state):
     start_state.enter()
 
     while (running):
-        stack[-1].handle_events() #
+        stack[-1].handle_events()
         stack[-1].update()
         stack[-1].draw()
 
