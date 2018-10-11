@@ -1,7 +1,7 @@
 import game_framework
 from pico2d import *
 
-__name__ = "PauseState"
+__name__ = "AdvancedPauseState"
 image = None
 
 
