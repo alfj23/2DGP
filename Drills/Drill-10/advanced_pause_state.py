@@ -1,29 +1,46 @@
 import game_framework
 from pico2d import *
 
-__name__ = "AdvancedPauseState"
-image = None
+import main_state
 
+__name__ = "AdvancedPauseState"
+icon = None
+counter = 0
+
+class Pause:
+    def __init__(self):
+        self.image = load_image('pause.png')
+        self.time = 0
+        self.blinkering = True
+
+    def update(self):
+        self.time += (self.time + 1) % 2
+
+    def draw(self):
+        if self.time == 0:
+            self.image.draw(400, 300)
 
 def enter():
-    global image
-    image = load_image('pause.png')
-
+    global icon
+    global counter
+    icon = Pause()
 
 def exit():
-    global image
-    del image
+    global icon
+    del icon
 
 
 def update():
+    global counter
+    icon.update()
 
-    pass
 
 
 def draw():
-    global image
+    global counter
     clear_canvas()
-    image.draw(400, 300)
+    main_state.draw()
+    icon.draw()
     update_canvas()
 
 
