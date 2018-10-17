@@ -1,17 +1,46 @@
-import random
-import json
-import os
-
 from pico2d import *
 
-name ="MainState"
+#name ="MainState"
 
-class player():
+
+class Grass():
     def __init__(self):
-        pass
+        self.image = load_image('map1.png')
+
+    def draw(self):
+        self.image.draw(400, 300)
+
+
+class Player():
+    def __init__(self):
+        self.x, self. y = 50, 90
+        self.frame = 0
+        self.image = load_image('Slugwalking.png')
+
     def update(self):
-        pass
-    
+        self.frame = (self.frame +1) % 28
+        self.x += 4
+
+    def draw(self):
+        self.image.clip_draw(self.frame * 10, 0, 50, 50, self.x, self.y)
+
+
+open_canvas(1093,500)
+#global Slug
+global grass
+grass = Grass()
+#Slug = Player()
+
+
+while True:
+    clear_canvas()
+    grass.draw()
+    #Slug.update()
+    #Slug.draw()
+
+close_canvas()
+
+
 
 def enter():
    pass
@@ -29,12 +58,12 @@ def resume():
 
 
 def handle_events():
-    events = get_events()
-    for event in events:
-       pass
+    pass
+
 
 def update():
     pass
+
 
 def draw():
     pass
