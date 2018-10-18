@@ -19,19 +19,17 @@ class Boy:
         self.frame = random.randint(0, 7)
         self.image = load_image('Idle+moving.png')
 
-    def update(self):
-        if dir > 0:
-            self.frame = (self.frame + 1) % 18
-        if dir < 0:
-            self.frame = 18
-            self.frame = (self.frame -1) 
-        #self.x += 5
+    def moving(self):
+        self.frame = (self.frame + 1) % 3
+
+    def idle(self):
+        self.frame = (self.frame + 1) % 3
 
     def draw(self):
-        self.image.clip_draw(self.frame * 80, 0, 80-3, 80, self.x, self.y)
+        self.image.clip_draw(self.frame * 80, 80, 80-3, 80, self.x, self.y)
+
 
 def handle_events():
-
     events = get_events()
     for event in events:
         if event.type == SDL_QUIT:
@@ -39,25 +37,27 @@ def handle_events():
         elif event.type == SDL_KEYDOWN:
             if event.key == SDLK_RIGHT:  # 우측화살표 키
                 dir = 1
-                slug.x += 5 * dir
+                slug.x += 15 * dir
             elif event.key == SDLK_LEFT:  # 좌측화살표 키
                 dir = -1
-                slug.x += 5 * dir
+                slug.x += 15 * dir
             elif event.key == SDLK_ESCAPE:  # ESC 키
                 running = False
         elif event.type == SDL_KEYUP:
             if event.key == SDLK_RIGHT:
-                dir = -1
-                # Current_direction = 1
+                dir = 0
+                slug.image.clip_draw(slug.frame * 80, 80, 80, 80, slug.x, slug.y)
+                #Current_direction = 1
             elif event.key == SDLK_LEFT:
-                dir = 1
-                # Current_direction = 0
+                dir = 0
+                slug.image.clip_draw(slug.frame * 80, 80, 80, 80, slug.x, slug.y)
+                #Current_direction = 0
 
 # initialization code
 
 running = True
 open_canvas()
-
+dir = 0
 slug = Boy()
 grass = Grass()
 
@@ -69,12 +69,12 @@ while True:
 
     clear_canvas()
     get_events()
-    slug.update()
+    slug.moving()
     grass.draw()
     slug.draw()
     update_canvas()
 
-    delay(0.08)
+    delay(0.02)
 
 
 # finalization code
