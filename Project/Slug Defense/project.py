@@ -15,10 +15,10 @@ class Player:
     def __init__(self):
         self.x, self.y = 0, 70
         self.frame = 0
-        self.image = load_image('TEST.png')
+        self.image = load_image('finaltest.png')
         self.dir = 0
         self.cannon = 0
-        self.cannonframe = 0
+        self.frame1 =0
 
     def moving(self):
         if self.dir == 1 or self.dir == -1:
@@ -28,20 +28,18 @@ class Player:
             self.frame = (self.frame + 1) % 3
             self.x = self.x - 0
         elif self.cannon == 1:
-            self.cannonframe = (self.cannonframe + 1) % 21
+            self.frame1 = (self.frame1 + 1) % 23
 
     def draw(self):
         if self.dir == 0:
-            self.image.clip_draw(self.frame * 80, 320, 80-3, 80, self.x, self.y)
+            self.image.clip_draw(self.frame * 80, 160, 80-3, 80, self.x, self.y)
         elif self.dir == 1 or self.dir == -1:
-            self.image.clip_draw(self.frame * 80, 240, 80-3, 80, self.x, self.y)
+            self.image.clip_draw(self.frame * 80, 80, 80-3, 80, self.x, self.y)
+
         if self.cannon == 1:
-            if self.cannonframe <= 5:
-                self.image.clip_draw(self.cannonframe * 140, 160, 140, 80, self.x+25, self.y)
-            elif 5 < self.cannonframe <= 13:
-                self.image.clip_draw(self.cannonframe * 140, 80, 140, 80, self.x+25, self.y)
-            elif self.cannonframe > 13:
-                self.image.clip_draw(self.cannonframe * 80, 0, 80, 80, self.x, self.y)
+                self.image.clip_draw(self.frame1 * 140, 0, 140, 80, self.x+25, self.y)
+
+
 
 
 def handle_events():
@@ -88,7 +86,7 @@ while running:
     slug.draw()
     update_canvas()
 
-    delay(0.04)
+    delay(0.02)
 
 
 # finalization code
