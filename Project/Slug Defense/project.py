@@ -18,15 +18,23 @@ class Boy:
         self.x, self.y = 0, 70
         self.frame = random.randint(0, 7)
         self.image = load_image('Idle+moving.png')
+        self.dir = 0
 
     def moving(self):
-        self.frame = (self.frame + 1) % 3
+        if self.dir == 1 or self.dir == -1:
+            self.frame = (self.frame + 1) % 18
+            self.x += self.dir * 10
 
     def idle(self):
-        self.frame = (self.frame + 1) % 3
+        if self.dir == 0:
+            self.frame = (self.frame + 1) % 3
+            self.x = self.x - 0
 
     def draw(self):
-        self.image.clip_draw(self.frame * 80, 80, 80-3, 80, self.x, self.y)
+        if self.dir == 0:
+            self.image.clip_draw(self.frame * 80, 80, 80-3, 80, self.x, self.y)
+        else:
+            self.image.clip_draw(self.frame * 80, 0, 80-3, 80, self.x, self.y)
 
 
 def handle_events():
@@ -36,22 +44,16 @@ def handle_events():
             running = False
         elif event.type == SDL_KEYDOWN:
             if event.key == SDLK_RIGHT:  # 우측화살표 키
-                dir = 1
-                slug.x += 15 * dir
+                slug.dir = 1
             elif event.key == SDLK_LEFT:  # 좌측화살표 키
-                dir = -1
-                slug.x += 15 * dir
+                slug.dir = -1
             elif event.key == SDLK_ESCAPE:  # ESC 키
                 running = False
         elif event.type == SDL_KEYUP:
             if event.key == SDLK_RIGHT:
-                dir = 0
-                slug.image.clip_draw(slug.frame * 80, 80, 80, 80, slug.x, slug.y)
-                #Current_direction = 1
+                slug.dir = 0
             elif event.key == SDLK_LEFT:
-                dir = 0
-                slug.image.clip_draw(slug.frame * 80, 80, 80, 80, slug.x, slug.y)
-                #Current_direction = 0
+                slug.dir = 0
 
 # initialization code
 
@@ -70,6 +72,7 @@ while True:
     clear_canvas()
     get_events()
     slug.moving()
+    slug.idle()
     grass.draw()
     slug.draw()
     update_canvas()
