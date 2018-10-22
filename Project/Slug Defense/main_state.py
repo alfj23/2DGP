@@ -15,7 +15,7 @@ class Player():
     def __init__(self):
         self.x, self. y = 50, 90
         self.frame = 0
-        self.image = load_image('Slugwalking.png')
+        self.image = load_image('.png')
 
     def update(self):
         self.frame = (self.frame +1) % 28
