@@ -39,6 +39,26 @@ class Player:
         if self.cannon == 1:
                 self.image.clip_draw(self.frame1 * 140, 0, 140, 80, self.x+25, self.y)
 
+class Cannon:
+    def __init__(self):
+        self.x, self.y = slug.x, slug.y+10
+        self.frame = 0
+        self.image = load_image('cannon_ball.png')
+        self.shot = False
+
+    def shoot(self):
+        self.x += 10
+        self.frame = (self.frame + 1) % 4
+        if self.x >= 799-10:
+            self.shot = False
+            self.x = slug.x
+            self.frame = 0
+           # print(slug.x)
+            print(self.x)
+
+    def draw(self):
+         self.image.clip_draw(self.frame * 40, 0, 40, 30, self.x, self.y)
+
 
 
 
@@ -54,9 +74,10 @@ def handle_events():
                 slug.dir = -1
             elif event.key == SDLK_ESCAPE:  # ESC 키
                 running = False
-            elif event.key == SDLK_x: # x키 공격
+            elif event.key == SDLK_x:  # x키 공격
                 slug.cannon = 1
                 slug.dir = -2
+                ball.shot = True
 
         elif event.type == SDL_KEYUP:
             if event.key == SDLK_RIGHT:
@@ -73,17 +94,20 @@ running = True
 open_canvas()
 slug = Player()
 grass = Grass()
+ball = Cannon()
 
 # game main loop code
 
 while running:
     handle_events()
-
+    ball.shoot()
     clear_canvas()
     get_events()
     slug.moving()
     grass.draw()
     slug.draw()
+    if(ball.shot == True):
+        ball.draw()
     update_canvas()
 
     delay(0.02)

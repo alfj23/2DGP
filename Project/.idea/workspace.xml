@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4dd5d27a-1d63-4ddf-9362-3b391dd40141" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Slug Defense/TEST.png" beforeDir="false" afterPath="$PROJECT_DIR$/Slug Defense/TEST.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Slug Defense/project.py" beforeDir="false" afterPath="$PROJECT_DIR$/Slug Defense/project.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,12 +36,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="2710" />
+          <entry key="py" value="3284" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="2710" />
+          <entry key="Python" value="3284" />
         </counts>
       </usages-collector>
     </session>
@@ -65,12 +64,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Slug Defense/project.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="38" column="28" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
+            <state relative-caret-position="172">
+              <caret line="55" column="12" selection-start-line="55" selection-start-column="12" selection-end-line="55" selection-end-column="12" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
-                <marker date="1540201160641" expanded="true" signature="578:742" ph="..." />
-                <marker date="1540201160641" expanded="true" signature="1132:1919" ph="..." />
+                <marker date="1540208604326" expanded="true" signature="578:742" ph="..." />
+                <marker date="1540208604326" expanded="true" signature="1122:1641" ph="..." />
+                <marker date="1540208604326" expanded="true" signature="1661:2482" ph="..." />
               </folding>
             </state>
           </provider>
@@ -334,12 +334,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Slug Defense/project.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="38" column="28" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
+        <state relative-caret-position="172">
+          <caret line="55" column="12" selection-start-line="55" selection-start-column="12" selection-end-line="55" selection-end-column="12" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
-            <marker date="1540201160641" expanded="true" signature="578:742" ph="..." />
-            <marker date="1540201160641" expanded="true" signature="1132:1919" ph="..." />
+            <marker date="1540208604326" expanded="true" signature="578:742" ph="..." />
+            <marker date="1540208604326" expanded="true" signature="1122:1641" ph="..." />
+            <marker date="1540208604326" expanded="true" signature="1661:2482" ph="..." />
           </folding>
         </state>
       </provider>
