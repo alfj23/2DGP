@@ -23,10 +23,8 @@ class Boy:
     def moving(self):
         if self.dir == 1 or self.dir == -1:
             self.frame = (self.frame + 1) % 18
-            self.x += self.dir * 10
-
-    def idle(self):
-        if self.dir == 0:
+            self.x += self.dir * 7
+        elif self.dir == 0:
             self.frame = (self.frame + 1) % 3
             self.x = self.x - 0
 
