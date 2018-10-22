@@ -17,7 +17,7 @@ class Boy:
     def __init__(self):
         self.x, self.y = 0, 70
         self.frame = random.randint(0, 7)
-        self.image = load_image('Idle+moving.png')
+        self.image = load_image('fire_Idle_moving.png')
         self.dir = 0
 
     def moving(self):
@@ -30,9 +30,9 @@ class Boy:
 
     def draw(self):
         if self.dir == 0:
-            self.image.clip_draw(self.frame * 80, 80, 80-3, 80, self.x, self.y)
+            self.image.clip_draw(self.frame * 80, 240, 80-3, 80, self.x, self.y)
         else:
-            self.image.clip_draw(self.frame * 80, 0, 80-3, 80, self.x, self.y)
+            self.image.clip_draw(self.frame * 80, 160, 80-3, 80, self.x, self.y)
 
 
 def handle_events():
@@ -47,6 +47,8 @@ def handle_events():
                 slug.dir = -1
             elif event.key == SDLK_ESCAPE:  # ESC 키
                 running = False
+            elif event.key == SDLK_x: # x키 공격
+                pass
         elif event.type == SDL_KEYUP:
             if event.key == SDLK_RIGHT:
                 slug.dir = 0
@@ -70,7 +72,6 @@ while True:
     clear_canvas()
     get_events()
     slug.moving()
-    slug.idle()
     grass.draw()
     slug.draw()
     update_canvas()
