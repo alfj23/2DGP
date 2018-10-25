@@ -36,7 +36,8 @@ class IdleState:
     @staticmethod
     def exit(boy, event):
         if event == SPACE:
-           boy.fire_ball()
+           # boy.fire_ball()
+           print('fire ball!')
 
     @staticmethod
     def do(boy):
@@ -70,7 +71,8 @@ class RunState:
     @staticmethod
     def exit(boy, event): # 왜 나가는지 event를 통해서 알려줄 수 있음.
         if event == SPACE:
-           boy.fire_ball()
+            print('fire ball!')
+           # boy.fire_ball()
 
     @staticmethod
     def do(boy):
