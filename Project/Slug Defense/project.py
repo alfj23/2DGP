@@ -36,12 +36,12 @@ class Player:
         elif self.dir == 1 or self.dir == -1:
             self.image.clip_draw(self.frame * 80, 80, 80-3, 80, self.x, self.y)
 
-        if self.cannon == 1:
+        if self.cannon == 1: # 포탄 발사
                 self.image.clip_draw(self.frame1 * 140, 0, 140, 80, self.x+25, self.y)
 
 class Cannon:
     def __init__(self):
-        self.x, self.y = slug.x, slug.y+10
+        self.x, self.y = slug.x+40, slug.y+10
         self.frame = 0
         self.image = load_image('cannon_ball.png')
         self.shot = False
@@ -51,12 +51,12 @@ class Cannon:
         self.frame = (self.frame + 1) % 4
         if self.x >= 799-10:
             self.shot = False
-            self.x = slug.x
+            self.x = slug.x+40
             self.frame = 0
-           # print(slug.x)
-            print(self.x)
+        print(self.x)
 
     def draw(self):
+        if(self.shot == True):
          self.image.clip_draw(self.frame * 40, 0, 40, 30, self.x, self.y)
 
 
@@ -100,14 +100,16 @@ ball = Cannon()
 
 while running:
     handle_events()
-    ball.shoot()
     clear_canvas()
     get_events()
     slug.moving()
     grass.draw()
     slug.draw()
     if(ball.shot == True):
+        ball.shoot()
         ball.draw()
+    else:
+        ball.shoot()
     update_canvas()
 
     delay(0.02)

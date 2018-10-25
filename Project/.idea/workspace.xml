@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4dd5d27a-1d63-4ddf-9362-3b391dd40141" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Slug Defense/project.py" beforeDir="false" afterPath="$PROJECT_DIR$/Slug Defense/project.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,11 +15,12 @@
     <session id="-556732525">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="7" />
-          <entry key="project.open.time.0" value="2" />
+          <entry key="project.closed" value="10" />
+          <entry key="project.open.time.0" value="3" />
           <entry key="project.open.time.3" value="5" />
           <entry key="project.open.time.4" value="1" />
-          <entry key="project.opened" value="8" />
+          <entry key="project.open.time.8" value="1" />
+          <entry key="project.opened" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -36,12 +38,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="3284" />
+          <entry key="py" value="3474" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="3284" />
+          <entry key="Python" value="3474" />
         </counts>
       </usages-collector>
     </session>
@@ -52,7 +54,7 @@
         <entry file="file://$PROJECT_DIR$/Slug Defense/main_state.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="323">
-              <caret line="17" column="39" lean-forward="true" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
+              <caret line="17" column="39" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
               <folding>
                 <marker date="1540194171597" expanded="true" signature="57:183" ph="..." />
                 <marker date="1540194171597" expanded="true" signature="198:686" ph="..." />
@@ -64,13 +66,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Slug Defense/project.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
-              <caret line="55" column="12" selection-start-line="55" selection-start-column="12" selection-end-line="55" selection-end-column="12" />
+            <state relative-caret-position="139">
+              <caret line="65" column="25" selection-start-line="65" selection-start-column="25" selection-end-line="65" selection-end-column="25" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
-                <marker date="1540208604326" expanded="true" signature="578:742" ph="..." />
-                <marker date="1540208604326" expanded="true" signature="1122:1641" ph="..." />
-                <marker date="1540208604326" expanded="true" signature="1661:2482" ph="..." />
               </folding>
             </state>
           </provider>
@@ -103,9 +102,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="951" />
-    <option name="width" value="978" />
-    <option name="height" value="1039" />
+    <option name="x" value="950" />
+    <option name="width" value="980" />
+    <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -255,7 +254,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32954547" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3338068" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3338068" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39914772" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -300,9 +299,7 @@
     <entry file="file://$PROJECT_DIR$/resource/MetalSlug.gif">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Slug Defense/SlugGunner.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Slug Defense/SlugGunner.png" />
     <entry file="file://$PROJECT_DIR$/Slug Defense/Slugwalking.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -312,10 +309,16 @@
     <entry file="file://$PROJECT_DIR$/Slug Defense/fire_idle_moving.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/Slug Defense/TEST.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Slug Defense/test3.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/Slug Defense/main_state.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
-          <caret line="17" column="39" lean-forward="true" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
+          <caret line="17" column="39" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
           <folding>
             <marker date="1540194171597" expanded="true" signature="57:183" ph="..." />
             <marker date="1540194171597" expanded="true" signature="198:686" ph="..." />
@@ -323,24 +326,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Slug Defense/TEST.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Slug Defense/test3.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/Slug Defense/finaltest.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Slug Defense/project.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="55" column="12" selection-start-line="55" selection-start-column="12" selection-end-line="55" selection-end-column="12" />
+        <state relative-caret-position="139">
+          <caret line="65" column="25" selection-start-line="65" selection-start-column="25" selection-end-line="65" selection-end-column="25" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
-            <marker date="1540208604326" expanded="true" signature="578:742" ph="..." />
-            <marker date="1540208604326" expanded="true" signature="1122:1641" ph="..." />
-            <marker date="1540208604326" expanded="true" signature="1661:2482" ph="..." />
           </folding>
         </state>
       </provider>
