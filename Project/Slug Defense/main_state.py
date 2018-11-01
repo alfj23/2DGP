@@ -6,9 +6,9 @@ from pico2d import *
 import game_framework
 import game_world
 
-from boy import Boy
+from player import Player
 from grass import Grass
-from ball import Ball
+from ball import Cannon
 
 name = "MainState"
 
@@ -16,8 +16,8 @@ boy = None
 grass = None
 
 def enter():
-    global boy
-    boy = Boy()
+    global player
+    player = Player()
     grass = Grass()
     game_world.add_object(grass, 0) # (변수, 레이어번호)
     game_world.add_object(boy, 1)
