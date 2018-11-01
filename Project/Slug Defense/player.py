@@ -35,37 +35,50 @@ class IdleState:
 
     @staticmethod
     def enter(player, event):
+        if event == RIGHT_DOWN:
+            player.velocity += 1
+        elif event == LEFT_DOWN:
+            player.velocity -= 1
+        elif event == RIGHT_UP:
+            player.velocity -= 1
+        elif event == LEFT_UP:
+            player.velocity += 1
         pass
 
     @staticmethod
-    def exit(boy, event):
+    def exit(player, event):
+        if event == X:
+           # player.fire_cannon()
+            print('fire!!!')
         pass
 
     @staticmethod
-    def do(boy):
+    def do(player):
+        player.frame = (player.frame + 1) % 3
         pass
 
     @staticmethod
-    def draw(boy):
+    def draw(player):
+        player.image.clip_draw(player.frame * 80, 160, 80 - 3, 80, player.x, player.y)
         pass
 
 
 class DriveState:
 
     @staticmethod
-    def enter(boy, event):
+    def enter(player, event):
        pass
 
     @staticmethod
-    def exit(boy, event): # 왜 나가는지 event를 통해서 알려줄 수 있음.
+    def exit(player, event): # 왜 나가는지 event를 통해서 알려줄 수 있음.
         pass
 
     @staticmethod
-    def do(boy):
+    def do(player):
         pass
 
     @staticmethod
-    def draw(boy):
+    def draw(player):
         pass
 
 

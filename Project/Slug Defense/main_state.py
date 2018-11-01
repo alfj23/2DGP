@@ -12,7 +12,7 @@ from ball import Cannon
 
 name = "MainState"
 
-boy = None
+player = None
 grass = None
 
 def enter():
@@ -20,7 +20,7 @@ def enter():
     player = Player()
     grass = Grass()
     game_world.add_object(grass, 0) # (변수, 레이어번호)
-    game_world.add_object(boy, 1)
+    game_world.add_object(player, 1)
 
 
 def exit():
@@ -42,7 +42,7 @@ def handle_events():
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
                 game_framework.quit()
         else:
-            boy.handle_event(event)
+            player.handle_event(event)
 
 
 def update():
