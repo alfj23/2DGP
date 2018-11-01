@@ -67,18 +67,33 @@ class DriveState:
 
     @staticmethod
     def enter(player, event):
-       pass
+        if event == RIGHT_DOWN:
+            player.velocity += 1
+        elif event == LEFT_DOWN:
+            player.velocity -= 1
+        elif event == RIGHT_UP:
+            player.velocity -= 1
+        elif event == LEFT_UP:
+            player.velocity += 1
+        pass
 
     @staticmethod
     def exit(player, event): # 왜 나가는지 event를 통해서 알려줄 수 있음.
+        if event == X:
+            #  player.fire_cannon()
+            print('fire!')
         pass
 
     @staticmethod
     def do(player):
+        player.frame = (player.frame + 1) % 18
+        player.x += player.velocity
+        player.x = clamp(40, player.x, 1600 - 40)
         pass
 
     @staticmethod
     def draw(player):
+        player.image.clip_draw(player.frame * 80, 80, 80-3, 80, player.x, player.y)
         pass
 
 
