@@ -1,19 +1,17 @@
 from pico2d import *
-from ball import Ball
+from ball import Cannon
 
 import game_world
 
 # Boy Event
-RIGHT_DOWN, LEFT_DOWN, RIGHT_UP, LEFT_UP, SLEEP_TIMER, SPACE, SHIFT = range(7)
+RIGHT_DOWN, LEFT_DOWN, RIGHT_UP, LEFT_UP, X= range(5)
 
 key_event_table = {
     (SDL_KEYDOWN, SDLK_RIGHT): RIGHT_DOWN,
     (SDL_KEYDOWN, SDLK_LEFT): LEFT_DOWN,
     (SDL_KEYUP, SDLK_RIGHT): RIGHT_UP,
     (SDL_KEYUP, SDLK_LEFT): LEFT_UP,
-    (SDL_KEYDOWN, SDLK_SPACE): SPACE,
-    (SDL_KEYDOWN, SDLK_LSHIFT): SHIFT,
-    (SDL_KEYDOWN, SDLK_RSHIFT): SHIFT
+    (SDL_KEYDOWN, SDLK_x): X
 }
 
 
@@ -35,7 +33,7 @@ class IdleState:
 
     @staticmethod
     def exit(boy, event):
-        if event == SPACE:
+        if event == X:
            boy.fire_ball()
 
     @staticmethod
@@ -110,38 +108,22 @@ class SleepState:
             boy.image.clip_composite_draw(boy.frame * 100, 200, 100, 100,
                     3.141592 / 2, 'hv', boy.x + 25, boy.y - 25, 100, 100) # 마지막 두개 확대 축소
 
-
 class DashState:
     @staticmethod
-    def enter(boy, event):
-        if event == RIGHT_DOWN:
-            boy.velocity += 1
-        elif event == LEFT_DOWN:
-            boy.velocity -= 1
-        elif event == RIGHT_UP:
-            boy.velocity -= 1
-        elif event == LEFT_UP:
-            boy.velocity += 1
-        boy.dir = boy.velocity
+    def enter(boy):
+        pass
 
     @staticmethod
-    def exit(boy, event):  # 왜 나가는지 event를 통해서 알려줄 수 있음.
-        if event == SPACE:
-            boy.fire_ball()
+    def exit(boy):
+        pass
 
     @staticmethod
     def do(boy):
-        boy.frame = (boy.frame + 1) % 8
-        boy.timer -= 1
-        boy.x += boy.velocity
-        boy.x = clamp(25, boy.x, 1600 - 25)
+        pass
 
     @staticmethod
     def draw(boy):
-        if boy.velocity == 1:
-            boy.image.clip_draw(boy.frame * 100, 100, 100, 100, boy.x, boy.y)
-        else:
-            boy.image.clip_draw(boy.frame * 100, 0, 100, 100, boy.x, boy.y)
+        pass
 
 next_state_table = {
     IdleState: {RIGHT_UP: RunState, LEFT_UP: RunState,
@@ -157,6 +139,7 @@ next_state_table = {
 
 
 class Boy:
+
     def __init__(self):
         self.x, self.y = 1600 // 2, 90
         self.image = load_image('animation_sheet.png')
@@ -167,9 +150,13 @@ class Boy:
         self.cur_state = IdleState
         self.cur_state.enter(self, None)
 
+
     def fire_ball(self):
-        ball = Ball(self.x, self.y, self.dir*3)
+        ball = Cannon(self.x, self.y, self.dir*3)
         game_world.add_object(ball, 1)
+
+
+
 
     def add_event(self, event):
         self.event_que.insert(0, event)
@@ -184,6 +171,7 @@ class Boy:
 
     def draw(self):
         self.cur_state.draw(self)
+
 
     def handle_event(self, event):
         if (event.type, event.key) in key_event_table:

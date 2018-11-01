@@ -8,18 +8,17 @@ import game_world
 
 from boy import Boy
 from grass import Grass
-from ball import Ball
+
 
 name = "MainState"
 
 boy = None
-grass = None
 
 def enter():
     global boy
     boy = Boy()
     grass = Grass()
-    game_world.add_object(grass, 0) # (변수, 레이어번호)
+    game_world.add_object(grass, 0)
     game_world.add_object(boy, 1)
 
 
@@ -55,7 +54,6 @@ def draw():
     for game_object in game_world.all_objects():
         game_object.draw()
     update_canvas()
-
 
 
 
