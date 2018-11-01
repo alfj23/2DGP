@@ -152,14 +152,10 @@ class Boy:
         self.cur_state = IdleState
         self.cur_state.enter(self, None)
 
-
     def fire_ball(self):
         # print('FIRE BALL')
         ball = Ball(self.x, self.y, self.dir*3)
         game_world.add_object(ball, 1)
-
-
-
 
     def add_event(self, event):
         self.event_que.insert(0, event)

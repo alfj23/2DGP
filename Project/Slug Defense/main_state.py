@@ -8,7 +8,7 @@ import game_world
 
 from player import Player
 from grass import Grass
-from ball import Cannon
+from cannon import Cannon
 
 name = "MainState"
 
