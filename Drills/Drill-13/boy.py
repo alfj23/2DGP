@@ -72,7 +72,7 @@ class WalkingState:
         boy.y += boy.y_velocity * game_framework.frame_time
 
         boy.x = clamp(inclination, boy.x, boy.bg.w - inclination)
-        boy.y = clamp(65, boy.y, boy.bg.h - 50)
+        boy.y = clamp(65, boy.y, boy.bg.h - 50) # 기울기 노필요..
 
 
     @staticmethod
