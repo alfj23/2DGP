@@ -72,7 +72,7 @@ class WalkingState:
         boy.y += boy.y_velocity * game_framework.frame_time
 
         boy.x = clamp(inclination, boy.x, boy.bg.w - inclination)
-        boy.y = clamp(inclination, boy.y, boy.bg.h)
+        boy.y = clamp(inclination, boy.y, boy.bg.h - inclination)
 
 
     @staticmethod
