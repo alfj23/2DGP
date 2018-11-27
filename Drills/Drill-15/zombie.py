@@ -40,18 +40,18 @@ class Zombie:
         self.load_images()
         self.dir = random.random()*2*math.pi # random moving direction
         self.speed = 0
-        self.timer = 1.0 # change direction every 1 sec when wandering
+        self.timer = 1.0  # change direction every 1 sec when wandering
         self.frame = 0
         self.build_behavior_tree()
 
     def __getstate__(self):
-        # fill here
-        pass
+        state = {'x': self.x, 'y': self.y, 'dir': self.dir, 'name': self.name, 'size': self.size}
+        return state
 
 
     def __setstate__(self, state):
-        # fill here
-        pass
+        self.__init__()
+        self.__dict__.update(state)
 
 
     def wander(self):

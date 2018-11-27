@@ -44,14 +44,22 @@ def create_new_world():
     boy = Boy()
     game_world.add_object(boy, 1)
 
-    # fill here
+    with open('zombie_data.json', 'r') as f:
+        zombie_data_list = json.load(f)  # f라는 파일을 역 직렬화 해서 리스트로
 
+    for data in zombie_data_list:  # json 파일을 바꿈으로 내가 원하는 레벨을 설계할 수 있다.
+        zombie = Zombie(data['name'], data['x'], data['y'], data['size'])
+        game_world.add_object(zombie, 1)
 
 
 def load_saved_world():
     global boy
 
-    # fill here
+    game_world.load() # 바깥에 저장된 데이터를 가져옴. 근데 보이가 누구냐?
+    for o in game_world.all_objects():
+        if isinstance(o, Boy): # isinstance(a,b) 어떤 객체(a)가 어떤 클래스(b)로부터 만들어졌는지 알려줄 수 있음.
+            boy = o
+            break  # 소년 객체는 하나 밖에 없기때문에 찾아서 저장하면 반복문에서 빠져나가줌.
 
 
 def handle_events():

@@ -2,7 +2,7 @@ import pickle
 
 # layer 0: Background Objects
 # layer 1: Foreground Objects
-objects = [[],[]]
+objects = [[], []]  # 얘를 저장하고 나중에 복구하면 게임 세이브 앤 로드 구현가능!
 
 
 def add_object(o, layer):
@@ -33,9 +33,11 @@ def all_objects():
 
 
 def save():
-    # fill here
-    pass
+    with open('game.sav', 'wb') as f:
+        pickle.dump(objects, f)
+
 
 def load():
-    # fill here
-    pass
+    global objects
+    with open('game.sav', 'rb') as f:
+        objects = pickle.load(f)

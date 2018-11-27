@@ -33,7 +33,7 @@ class Zombie:
     def __init__(self):
         self.x, self.y = 1280 / 4 * 3, 1024 / 4 * 3
         self.load_images()
-        self.dir = random.random()*2*math.pi # random moving direction
+        self.dir = random.random()*2*math.pi  # random moving direction
         self.speed = 0
         self.timer = 1.0  # change direction every 1 sec when wandering
         self.frame = 0
