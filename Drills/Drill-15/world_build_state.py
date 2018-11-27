@@ -55,12 +55,12 @@ def create_new_world():
 def load_saved_world():
     global boy, zombie
 
-    game_world.load() # 바깥에 저장된 데이터를 가져옴. 근데 보이가 누구냐?
+    game_world.load()  # 바깥에 저장된 데이터를 가져옴. 근데 보이가 누구냐?
     for o in game_world.all_objects():
-        if isinstance(o, Boy): # isinstance(a,b) 어떤 객체(a)가 어떤 클래스(b)로부터 만들어졌는지 알려줄 수 있음.
+        if isinstance(o, Boy):  # isinstance(a,b) 어떤 객체(a)가 어떤 클래스(b)로부터 만들어졌는지 알려줄 수 있음.
             boy = o
             break  # 소년 객체는 하나 밖에 없기때문에 찾아서 저장하면 반복문에서 빠져나가줌.
-    for o in game_world.all_objects(o, Zombie):
+    for o in game_world.all_objects():
         if isinstance(o, Zombie):
             zombie = o
             break

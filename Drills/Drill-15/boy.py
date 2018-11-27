@@ -130,7 +130,7 @@ class Boy:
         self.start_time = get_time()
 
     def __getstate__(self):
-        state = {'x': self.x, 'y': self.y, 'dir': self.dir, 'cur_state': self.cur_state}  # 저장할 데이터들.
+        state = {'x': self.x, 'y': self.y, 'dir': self.dir, 'cur_state': self.cur_state, 'start_time': self.start_time}  # 저장할 데이터들.
         return state
 
     def __setstate__(self, state):
@@ -138,7 +138,6 @@ class Boy:
         self.__dict__.update(state)
 
     def get_bb(self):
-        # fill here
         return self.x - 50, self.y - 50, self.x + 50, self.y + 50
 
 
