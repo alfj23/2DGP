@@ -5,7 +5,7 @@ import game_world
 
 # Boy Run Speed
 PIXEL_PER_METER = (10.0 / 0.3)  # 10 pixel 30 cm
-RUN_SPEED_KMPH = 40.0  # Km / Hour
+RUN_SPEED_KMPH = 20.0  # Km / Hour
 RUN_SPEED_MPM = (RUN_SPEED_KMPH * 1000.0 / 60.0)
 RUN_SPEED_MPS = (RUN_SPEED_MPM / 60.0)
 RUN_SPEED_PPS = (RUN_SPEED_MPS * PIXEL_PER_METER)
@@ -66,38 +66,42 @@ class WalkingState:
 
     @staticmethod
     def do(boy):
-        inclination = boy.y / 5
         boy.frame = (boy.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % FRAMES_PER_ACTION
         boy.x += boy.x_velocity * game_framework.frame_time
         boy.y += boy.y_velocity * game_framework.frame_time
-
-        boy.x = clamp(inclination, boy.x, boy.bg.w - inclination)
-        boy.y = clamp(65, boy.y, boy.bg.h - 50) # 기울기 노필요..
-
+        boy.x = clamp(25, boy.x, get_canvas_width() - 25)
+        boy.y = clamp(25, boy.y, get_canvas_height() - 25)
 
     @staticmethod
     def draw(boy):
-        cx, cy = boy.x - boy.bg.window_left, boy.y - boy.bg.window_bottom
         if boy.x_velocity > 0:
-            boy.image.clip_draw(int(boy.frame) * 100, 100, 100, 100, cx, cy)
+            boy.image.clip_draw(int(boy.frame) * 100, 100, 100, 100, boy.x, boy.y)
             boy.dir = 1
         elif boy.x_velocity < 0:
-            boy.image.clip_draw(int(boy.frame) * 100, 0, 100, 100, cx, cy)
+            boy.image.clip_draw(int(boy.frame) * 100, 0, 100, 100, boy.x, boy.y)
             boy.dir = -1
         else:
             # if boy x_velocity == 0
             if boy.y_velocity > 0 or boy.y_velocity < 0:
                 if boy.dir == 1:
-                    boy.image.clip_draw(int(boy.frame) * 100, 100, 100, 100, cx, cy)
+                    boy.image.clip_draw(int(boy.frame) * 100, 100, 100, 100, boy.x, boy.y)
                 else:
-                    boy.image.clip_draw(int(boy.frame) * 100, 0, 100, 100, cx, cy)
+                    boy.image.clip_draw(int(boy.frame) * 100, 0, 100, 100, boy.x, boy.y)
             else:
                 # boy is idle
                 if boy.dir == 1:
-                    boy.image.clip_draw(int(boy.frame) * 100, 300, 100, 100, cx, cy)
+                    boy.image.clip_draw(int(boy.frame) * 100, 300, 100, 100, boy.x, boy.y)
                 else:
-                    boy.image.clip_draw(int(boy.frame) * 100, 200, 100, 100, cx, cy)
+                    boy.image.clip_draw(int(boy.frame) * 100, 200, 100, 100, boy.x, boy.y)
 
+#next_state_table = {
+#    IdleState: {RIGHTKEY_UP: RunState, LEFTKEY_UP: RunState, RIGHTKEY_DOWN: RunState, LEFTKEY_DOWN: RunState,
+#                UPKEY_UP: RunState, UPKEY_DOWN: RunState, DOWNKEY_UP: RunState, DOWNKEY_DOWN: RunState,
+#                SPACE: IdleState},
+#    RunState:  {RIGHTKEY_UP: IdleState, LEFTKEY_UP: IdleState, RIGHTKEY_DOWN: IdleState, LEFTKEY_DOWN: IdleState,
+#                UPKEY_UP: IdleState, UPKEY_DOWN: IdleState, DOWNKEY_UP: IdleState, DOWNKEY_DOWN: IdleState,
+#                SPACE: IdleState},
+#}
 
 next_state_table = {
     WalkingState: {RIGHTKEY_UP: WalkingState, LEFTKEY_UP: WalkingState, RIGHTKEY_DOWN: WalkingState, LEFTKEY_DOWN: WalkingState,
@@ -107,28 +111,42 @@ next_state_table = {
 
 
 class Boy:
+    image = None
+    font = None
 
     def __init__(self):
-        self.canvas_width = get_canvas_width()
-        self.canvas_height = get_canvas_height()
+        self.x, self.y = 1280 // 2, 1024 // 2
         # Boy is only once created, so instance image loading is fine
-        self.image = load_image('animation_sheet.png')
-        self.font = load_font('ENCR10B.TTF', 16)
+        if Boy.image is None:
+            Boy.image = load_image('animation_sheet.png')
+        if Boy.font is None:
+            Boy.font = load_font('ENCR10B.TTF', 20)
         self.dir = 1
         self.x_velocity, self.y_velocity = 0, 0
         self.frame = 0
         self.event_que = []
         self.cur_state = WalkingState
         self.cur_state.enter(self, None)
+        self.start_time = get_time()
+
+    def __getstate__(self):
+        # fill here
+        pass
+
+
+    def __setstate__(self, state):
+        # fill here
+        pass
 
     def get_bb(self):
+        # fill here
         return self.x - 50, self.y - 50, self.x + 50, self.y + 50
 
 
-    def set_background(self, bg):
-        self.bg = bg
-        self.x = self.bg.w / 2
-        self.y = self.bg.h / 2
+    def fire_ball(self):
+        ball = Ball(self.x, self.y, self.dir * RUN_SPEED_PPS * 10)
+        game_world.add_object(ball, 1)
+
 
     def add_event(self, event):
         self.event_que.insert(0, event)
@@ -143,8 +161,7 @@ class Boy:
 
     def draw(self):
         self.cur_state.draw(self)
-        self.font.draw(self.x - self.bg.window_left - 60, self.y - self.bg.window_bottom + 50, '(%5d, %5d)' % (self.x, self.y), (255, 255, 0))
-        draw_rectangle(*self.get_bb())
+        self.font.draw(self.x - 60, self.y + 50, '(Time: %3.2f)' % (get_time() - self.start_time), (0, 0, 0))
 
     def handle_event(self, event):
         if (event.type, event.key) in key_event_table:
