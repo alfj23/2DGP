@@ -7,6 +7,7 @@ from pico2d import *
 import game_framework
 import game_world
 
+import ranking_state
 import world_build_state
 
 name = "MainState"
@@ -28,7 +29,7 @@ boy = None
 
 def enter():
     # game world is prepared already in world_build_state
-    global boy
+    global boy, zombie
     boy = world_build_state.get_boy()
     pass
 
@@ -52,6 +53,8 @@ def handle_events():
             game_framework.change_state(world_build_state)
         elif event.type == SDL_KEYDOWN and event.key == SDLK_s:
             game_world.save()
+        elif collide(boy, world_build_state.zombie):
+            game_framework.change_state(ranking_state)
         else:
             boy.handle_event(event)
 
